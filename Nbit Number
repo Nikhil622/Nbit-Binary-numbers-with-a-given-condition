@@ -1,0 +1,21 @@
+class Solution{
+public:
+    void fun(int n,string s,vector<string>&res,int zeros,int ones)
+    {  if(n==0)
+        { res.push_back(s);
+          return; 
+        }
+       if(zeros<ones)
+       {  fun(n-1,s+'1',res,zeros,ones+1);
+          fun(n-1,s+'0',res,zeros+1,ones);
+       }
+       else
+         fun(n-1,s+'1',res,zeros,ones+1);
+    }
+	vector<string> NBitBinary(int n)
+	{   string s;
+	    vector<string>res;
+	    fun(n,s,res,0,0);
+	    return res;
+	}
+};
